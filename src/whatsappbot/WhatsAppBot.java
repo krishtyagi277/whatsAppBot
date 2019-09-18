@@ -246,8 +246,11 @@ Logger.getLogger(WhatsAppBot.class.getName()).log(Level.SEVERE, null, ex1);
 public boolean checkItsAGroup(){
 WebElement main = driver.findElement(By.xpath("//*[@id=\"main\"]/header/div[2]/div[2]/span"));
 String members = main.getAttribute("title");
-
-return members.contains("group");
+System.out.println(members);
+String[] mem = members.split(",");
+for(int i=0;i<mem.length;i++)
+    System.out.println(mem[i]);
+return members.contains("group") || mem.length>1;
 }
 //this function has used to extract the text from the messges
 public void extractTheTextFromMesseges(String numberOfNewMesseges,List<WebElement> messeges ){
